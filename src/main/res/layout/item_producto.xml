@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/txtProdCodigo"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Codigo:"
+        android:text="Codigo:"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvProdCodigo"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txtProdCodigo"/>
+
+    <TextView
+        android:id="@+id/txtProdNombre"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Nombre:"
+        android:text="Nombre:"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvProdCodigo"/>
+
+    <TextView
+        android:id="@+id/tvProdNombre"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="Mesa"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txtProdNombre"/>
+
+    <TextView
+        android:id="@+id/txtProdCantidad"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Cantidad:"
+        android:text="Cantidad:"
+        app:layout_constraintTop_toBottomOf="@id/txtProdCodigo"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvProdCantidad"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="10"
+        app:layout_constraintTop_toBottomOf="@id/tvProdCodigo"
+        app:layout_constraintStart_toEndOf="@id/txtProdCantidad"/>
+
+    <TextView
+        android:id="@+id/txtProdPrecio"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Precio:"
+        android:text="Precio:"
+        app:layout_constraintTop_toBottomOf="@id/txtProdNombre"
+        app:layout_constraintStart_toEndOf="@id/tvProdCantidad"/>
+
+    <TextView
+        android:id="@+id/tvProdPrecio"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="$300"
+        app:layout_constraintTop_toBottomOf="@id/tvProdNombre"
+        app:layout_constraintStart_toEndOf="@id/txtProdPrecio"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

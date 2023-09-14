@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/txtCliNombre"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Nombre:"
+        android:text="Nombre:"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvCliNombre"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="Jesus"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txtCliNombre"/>
+
+    <TextView
+        android:id="@+id/txtCliApellidos"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Apellidos:"
+        android:text="Apellidos:"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvCliNombre"/>
+
+    <TextView
+        android:id="@+id/tvCliApellidos"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="Sanchez Guzman"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txtCliApellidos"/>
+
+    <TextView
+        android:id="@+id/txtCliCredito"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Credito Disponible:"
+        android:text="Credito Disponible:"
+        app:layout_constraintTop_toBottomOf="@id/txtCliNombre"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvCliCredito"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="$250"
+        app:layout_constraintTop_toBottomOf="@id/tvCliNombre"
+        app:layout_constraintStart_toEndOf="@id/txtCliCredito"/>
+
+    <TextView
+        android:id="@+id/txtCliTelefono"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="@color/purple_500"
+        tools:text="Telefono:"
+        android:text="Telefono:"
+        app:layout_constraintTop_toBottomOf="@id/txtCliApellidos"
+        app:layout_constraintStart_toEndOf="@id/tvCliCredito"/>
+
+    <TextView
+        android:id="@+id/tvCliTelefono"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        tools:text="6677475067"
+        app:layout_constraintTop_toBottomOf="@id/tvCliApellidos"
+        app:layout_constraintStart_toEndOf="@id/txtCliTelefono"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
