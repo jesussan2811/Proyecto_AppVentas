@@ -24,9 +24,7 @@ public class ModeloVentas {
         this.fechaVenta = fechaVenta;
     }
 
-    public int getFolio() {
-        return folio;
-    }
+    public int getFolio() { return folio; }
 
     public int getCliente() {
         return cliente;

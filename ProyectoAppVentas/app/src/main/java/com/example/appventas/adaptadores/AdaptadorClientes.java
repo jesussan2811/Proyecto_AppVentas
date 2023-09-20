@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appventas.Detalles.DetalleClientes;
 import com.example.appventas.R;
 import com.example.appventas.entidades.ModeloClientes;
 
@@ -42,6 +43,16 @@ public class AdaptadorClientes extends RecyclerView.Adapter<AdaptadorClientes.Vi
         holder.credito.setText(Clientes.get(position).getCredito()+"");
         holder.telefono.setText(Clientes.get(position).getTelefono());
 
+        //Se agrega el evento click al item seleccionado de la lista
+        //para mostrar el detalle
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, DetalleClientes.class);
+                intent.putExtra("Cliente",Clientes.get(position));
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override

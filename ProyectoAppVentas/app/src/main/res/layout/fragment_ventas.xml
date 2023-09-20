@@ -35,13 +35,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="*"
-                        android:layout_marginTop="20dp"/>
+                        android:layout_marginTop="20dp"
+                        android:text="*" />
+
                     <EditText
                         android:id="@+id/ClienteID"
                         android:layout_width="match_parent"
@@ -49,19 +51,21 @@
                         android:layout_marginTop="20dp"
                         android:hint="ClienteID"
                         android:inputType="text"
-                        android:maxLength="25"/>
+                        android:maxLength="25" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="*"
-                        android:layout_marginTop="20dp"/>
+                        android:layout_marginTop="20dp"
+                        android:text="*" />
+
                     <EditText
                         android:id="@+id/CodigosProdctos"
                         android:layout_width="match_parent"
@@ -69,9 +73,8 @@
                         android:layout_marginTop="20dp"
                         android:hint="Codigos de Productos"
                         android:inputType="text"
-                        android:maxLength="15"/>
+                        android:maxLength="15" />
                 </LinearLayout>
-
 
 
             </LinearLayout>
@@ -82,20 +85,27 @@
                 android:layout_below="@+id/linlay1"
                 android:layout_gravity="center">
 
-                <Button
-                    android:id="@+id/CapSalir"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Salir" />
 
                 <Button
-                    android:id="@+id/CapEnviar"
+                    android:id="@+id/VentasLimpiar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Enviar"
+                    android:text="Limpiar" />
+
+                <Button
+                    android:id="@+id/VentasComprar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comprar"
                     tools:ignore="MissingConstraints"
                     tools:layout_editor_absoluteX="230dp"
                     tools:layout_editor_absoluteY="474dp" />
+
+                <Button
+                    android:id="@+id/VentasListado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Listado" />
 
 
             </LinearLayout>
