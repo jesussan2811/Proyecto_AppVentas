@@ -1,28 +1,36 @@
 package com.example.appventas.MenuFragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
+import com.example.appventas.AppVentasBD;
+import com.example.appventas.Capturas.CapturaProductos;
 import com.example.appventas.R;
+import com.example.appventas.adaptadores.AdaptadorProductos;
+import com.example.appventas.entidades.ModeloProductos;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProductosFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class ProductosFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    RecyclerView rvProductos;
+    ArrayList<ModeloProductos> listaProductos;
+    AppVentasBD appVentasBD;
+    Button btnNuevo;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -30,15 +38,7 @@ public class ProductosFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProductosFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static ProductosFragment newInstance(String param1, String param2) {
         ProductosFragment fragment = new ProductosFragment();
         Bundle args = new Bundle();
@@ -61,6 +61,47 @@ public class ProductosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_productos, container, false);
+        View view = inflater.inflate(R.layout.fragment_productos, container, false);
+
+        listaProductos = new ArrayList<>();
+        rvProductos = view.findViewById(R.id.recyclerViewProductos);
+        btnNuevo = (Button) view.findViewById(R.id.btnNuevoProducto);
+        appVentasBD = new AppVentasBD(getContext());
+        mostrarProductos(appVentasBD.mostrarProductos());
+
+
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        rvProductos.setLayoutManager(linearLayoutManager);
+
+        btnNuevo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), CapturaProductos.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        appVentasBD = new AppVentasBD(getContext());
+        mostrarProductos(appVentasBD.mostrarProductos());
+    }
+    public void mostrarProductos(ArrayList<ModeloProductos> productos){
+
+        listaProductos = productos;
+        AdaptadorProductos adapter = new AdaptadorProductos(getActivity(),listaProductos);
+        try {
+            rvProductos.setAdapter(adapter);
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
     }
 }

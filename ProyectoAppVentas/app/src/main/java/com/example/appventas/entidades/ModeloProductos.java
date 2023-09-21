@@ -1,6 +1,10 @@
 package com.example.appventas.entidades;
 
-public class ModeloProductos {
+
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ModeloProductos implements Serializable {
     private int codigo;
     private String prodNombre;
     private String descripcion;

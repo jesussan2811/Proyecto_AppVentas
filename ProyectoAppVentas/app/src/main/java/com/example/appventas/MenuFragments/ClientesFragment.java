@@ -68,10 +68,10 @@ public class ClientesFragment extends Fragment {
         listaClientes = new ArrayList<>();
         rvClientes = view.findViewById(R.id.recyclerViewClientes);
         btnNuevo = (Button) view.findViewById(R.id.nuevoCliente);
-        appVentasBD= new AppVentasBD(getContext());
+        appVentasBD = new AppVentasBD(getContext());
         mostrarClientes(appVentasBD.mostrarClientes());
 
-        btnNuevo = (Button) view.findViewById(R.id.nuevoCliente);
+
         /*Ajustar el recyclerview de manera vertical*/
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -91,7 +91,7 @@ public class ClientesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        appVentasBD= new AppVentasBD(getContext());
+        appVentasBD = new AppVentasBD(getContext());
         mostrarClientes(appVentasBD.mostrarClientes());
     }
     public void mostrarClientes(ArrayList<ModeloClientes> clientes){

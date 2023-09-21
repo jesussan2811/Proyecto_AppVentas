@@ -43,7 +43,7 @@ public class CapturaClientes extends AppCompatActivity {
 
 
         builder = new AlertDialog.Builder(this);
-        final AppVentasBD appVentasBD=new AppVentasBD(getApplicationContext());
+        final AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,7 +10,7 @@
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Captura de Prospecto"
+        android:text="Captura de Productos"
         android:textSize="35dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
@@ -43,13 +43,13 @@
                         android:text="*"
                         android:layout_marginTop="20dp"/>
                     <EditText
-                        android:id="@+id/CapNombre"
+                        android:id="@+id/CapProdNombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:hint="Nombre"
+                        android:hint="Nombre del producto"
                         android:inputType="text"
-                        android:maxLength="25"/>
+                        android:maxLength="30"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -63,23 +63,14 @@
                         android:text="*"
                         android:layout_marginTop="20dp"/>
                     <EditText
-                        android:id="@+id/CapApellidoPat"
+                        android:id="@+id/CapProdDescripcion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:hint="Apellido Paterno"
+                        android:hint="Descripcion"
                         android:inputType="text"
-                        android:maxLength="15"/>
+                        android:maxLength="50"/>
                 </LinearLayout>
-
-                <EditText
-                    android:id="@+id/CapApellidoMat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:hint="Apellido Materno"
-                    android:inputType="text"
-                    android:maxLength="15"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,13 +83,13 @@
                         android:text="*"
                         android:layout_marginTop="20dp"/>
                     <EditText
-                        android:id="@+id/CapCalle"
+                        android:id="@+id/CapProdMarca"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:hint="Calle"
+                        android:hint="Marca"
                         android:inputType="text"
-                        android:maxLength="25"/>
+                        android:maxLength="20"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -112,51 +103,11 @@
                         android:text="*"
                         android:layout_marginTop="20dp"/>
                     <EditText
-                        android:id="@+id/CapNoCasa"
+                        android:id="@+id/CapProdCantidad"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:hint="Numero de Casa"
-                        android:inputType="number"
-                        android:maxLength="4"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:layout_marginTop="20dp"/>
-                    <EditText
-                        android:id="@+id/CapColonia"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:hint="Colonia"
-                        android:inputType="text"
-                        android:maxLength="25"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:layout_marginTop="20dp"/>
-                    <EditText
-                        android:id="@+id/CapCP"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:hint="Codigo Postal"
+                        android:hint="Cantidad"
                         android:inputType="number"
                         android:maxLength="5"/>
                 </LinearLayout>
@@ -172,41 +123,24 @@
                         android:text="*"
                         android:layout_marginTop="20dp"/>
                     <EditText
-                        android:id="@+id/CapTelefono"
+                        android:id="@+id/CapProdPrecio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:hint="Telefono"
-                        android:inputType="number"
-                        android:maxLength="10"/>
+                        android:hint="Precio"
+                        android:inputType="text"
+                        android:maxLength="16"/>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="*"
-                        android:layout_marginTop="20dp"/>
-                    <EditText
-                        android:id="@+id/CapRFC"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:hint="RFC"
-                        android:inputType="text"
-                        android:maxLength="14"/>
-                </LinearLayout>
+
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/linlay1">
+                android:layout_below="@+id/linlay1"
+                android:layout_gravity="center">
 
                 <Button
                     android:id="@+id/CapSalir"
@@ -219,9 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Enviar"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="230dp"
-                    tools:layout_editor_absoluteY="474dp" />
+                    tools:ignore="MissingConstraints"/>
 
 
             </LinearLayout>
