@@ -76,12 +76,10 @@ public class CapturaProductos extends AppCompatActivity {
                                 break;
 
                             case DialogInterface.BUTTON_NEGATIVE:
-
                                 break;
                         }
                     }
                 };
-
 
                 builder.setMessage("Seguro que quieres Salir?").setPositiveButton("Si", dialogClickListener)
                         .setNegativeButton("No", dialogClickListener).show();
