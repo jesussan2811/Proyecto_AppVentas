@@ -188,7 +188,7 @@ android:orientation="vertical">
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
         <TextView
-            android:id="@+id/evaColonia"
+            android:id="@+id/DetalCliFechaNacimiento"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginTop="20dp"

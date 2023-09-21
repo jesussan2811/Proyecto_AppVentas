@@ -21,6 +21,7 @@ import com.example.appventas.adaptadores.AdaptadorClientes;
 import com.example.appventas.entidades.ModeloClientes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ClientesFragment extends Fragment {
@@ -62,19 +63,15 @@ public class ClientesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_clientes, container, false);
-
-
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_clientes, container, false);
 
         listaClientes = new ArrayList<>();
         rvClientes = view.findViewById(R.id.recyclerViewClientes);
         btnNuevo = (Button) view.findViewById(R.id.nuevoCliente);
+        appVentasBD= new AppVentasBD(getContext());
+        mostrarClientes(appVentasBD.mostrarClientes());
 
+        btnNuevo = (Button) view.findViewById(R.id.nuevoCliente);
         /*Ajustar el recyclerview de manera vertical*/
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -83,21 +80,24 @@ public class ClientesFragment extends Fragment {
         btnNuevo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), CapturaClientes.class);
+                Intent intent = new Intent(getActivity(), CapturaClientes.class);
                 startActivity(intent);
             }
         });
 
+        return view;
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        appVentasBD= new AppVentasBD(getContext());
+        mostrarClientes(appVentasBD.mostrarClientes());
     }
     public void mostrarClientes(ArrayList<ModeloClientes> clientes){
 
         listaClientes  = clientes;
-        AdaptadorClientes adapter = new AdaptadorClientes(this,listaClientes);
+        AdaptadorClientes adapter = new AdaptadorClientes(getActivity(),listaClientes);
         try {
             rvClientes.setAdapter(adapter);
         }catch (Exception e)

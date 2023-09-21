@@ -14,16 +14,16 @@
         android:theme="@style/Theme.AppVentas"
         tools:targetApi="31">
         <activity
-            android:name=".DetalleProductos"
+            android:name=".Detalles.DetalleProductos"
             android:exported="false" />
         <activity
-            android:name=".DetalleClientes"
+            android:name=".Detalles.DetalleClientes"
             android:exported="false" />
         <activity
-            android:name=".CapturaProductos"
+            android:name=".Capturas.CapturaProductos"
             android:exported="false" />
         <activity
-            android:name=".CapturaClientes"
+            android:name=".Capturas.CapturaClientes"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"

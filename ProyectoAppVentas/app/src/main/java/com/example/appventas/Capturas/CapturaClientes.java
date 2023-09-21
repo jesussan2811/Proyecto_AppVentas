@@ -57,6 +57,7 @@ public class CapturaClientes extends AppCompatActivity {
 
 
                 if(validarcampos(nombre,apellidos,credito,telefono,domicilio,fechaNacimiento)){
+                    Toast.makeText(getBaseContext(),"Nuevo Cliente Capturado",Toast.LENGTH_LONG).show();
                     appVentasBD.agregarCliente(nombre,apellidos,Double.parseDouble(credito),telefono,domicilio,fechaNacimiento);
                 }else{
                     Toast.makeText(getBaseContext(),"Llena todos los campos",Toast.LENGTH_LONG).show();

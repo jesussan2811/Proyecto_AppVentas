@@ -1,6 +1,9 @@
 package com.example.appventas.entidades;
 
-public class ModeloClientes {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ModeloClientes implements Serializable {
     private int cliID;
     private String cliNombre;
     private String apellido;

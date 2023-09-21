@@ -1,7 +1,9 @@
 package com.example.appventas.adaptadores;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +16,16 @@ import com.example.appventas.Detalles.DetalleClientes;
 import com.example.appventas.R;
 import com.example.appventas.entidades.ModeloClientes;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorClientes extends RecyclerView.Adapter<AdaptadorClientes.ViewHolder> {
 
-    private List<ModeloClientes> Clientes;
+    private ArrayList<ModeloClientes> Clientes;
     private Activity activity;
 
-    public AdaptadorClientes(Activity activity, List<ModeloClientes> Clientes) {
+    public AdaptadorClientes(Activity activity, ArrayList<ModeloClientes> Clientes) {
         this.Clientes = Clientes;
         this.activity = activity;
 
@@ -37,7 +41,7 @@ public class AdaptadorClientes extends RecyclerView.Adapter<AdaptadorClientes.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.nombre.setText(Clientes.get(position).getCliNombre());
         holder.apellidos.setText(Clientes.get(position).getApellido());
         holder.credito.setText(Clientes.get(position).getCredito()+"");
@@ -49,7 +53,7 @@ public class AdaptadorClientes extends RecyclerView.Adapter<AdaptadorClientes.Vi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetalleClientes.class);
-                intent.putExtra("Cliente",Clientes.get(position));
+                intent.putExtra("Cliente", Clientes.get(position));
                 activity.startActivity(intent);
             }
         });

@@ -99,10 +99,10 @@ public class AppVentasBD extends SQLiteOpenHelper {
         }
     }
 
-    public List<ModeloClientes> mostrarClientes(){
+    public ArrayList<ModeloClientes> mostrarClientes(){
         SQLiteDatabase bd=getReadableDatabase();
         Cursor cursor=bd.rawQuery("SELECT * FROM CLIENTES",null);
-        List<ModeloClientes> clientes=new ArrayList<>();
+        ArrayList<ModeloClientes> clientes=new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
                 clientes.add(new ModeloClientes(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getDouble(3),cursor.getString(4),cursor.getString(5),cursor.getString(6)));
@@ -111,10 +111,10 @@ public class AppVentasBD extends SQLiteOpenHelper {
         return clientes;
     }
 
-    public List<ModeloProductos> mostrarProductos(){
+    public ArrayList<ModeloProductos> mostrarProductos(){
         SQLiteDatabase bd=getReadableDatabase();
         Cursor cursor=bd.rawQuery("SELECT * FROM PRODUCTOS",null);
-        List<ModeloProductos> productos=new ArrayList<>();
+        ArrayList<ModeloProductos> productos=new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
                 productos.add(new ModeloProductos(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4),cursor.getDouble(5)));
@@ -123,10 +123,10 @@ public class AppVentasBD extends SQLiteOpenHelper {
         return productos;
     }
 
-    public List<ModeloUsuarios> mostrarUsuarios(){
+    public ArrayList<ModeloUsuarios> mostrarUsuarios(){
         SQLiteDatabase bd=getReadableDatabase();
         Cursor cursor=bd.rawQuery("SELECT * FROM USUARIOS",null);
-        List<ModeloUsuarios> usuarios=new ArrayList<>();
+        ArrayList<ModeloUsuarios> usuarios=new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
                 usuarios.add(new ModeloUsuarios(cursor.getInt(0),cursor.getString(1),cursor.getString(2)));
@@ -135,10 +135,10 @@ public class AppVentasBD extends SQLiteOpenHelper {
         return usuarios;
     }
 
-    public List<ModeloVentas> mostrarVentas(){
+    public ArrayList<ModeloVentas> mostrarVentas(){
         SQLiteDatabase bd=getReadableDatabase();
         Cursor cursor=bd.rawQuery("SELECT * FROM VENTAS",null);
-        List<ModeloVentas> ventas=new ArrayList<>();
+        ArrayList<ModeloVentas> ventas=new ArrayList<>();
         if (cursor.moveToFirst()){
             do {
                 ventas.add(new ModeloVentas(cursor.getInt(0),cursor.getInt(1),cursor.getString(2),cursor.getDouble(3),cursor.getString(4)));
