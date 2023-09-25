@@ -73,9 +73,7 @@ public class ClientesFragment extends Fragment {
 
 
         /*Ajustar el recyclerview de manera vertical*/
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        rvClientes.setLayoutManager(linearLayoutManager);
+        rvClientes.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
 
         btnNuevo.setOnClickListener(new View.OnClickListener() {
             @Override

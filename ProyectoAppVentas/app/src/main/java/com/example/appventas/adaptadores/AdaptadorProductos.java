@@ -14,14 +14,15 @@ import com.example.appventas.Detalles.DetalleProductos;
 import com.example.appventas.R;
 import com.example.appventas.entidades.ModeloProductos;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.ViewHolder> {
 
-    private List<ModeloProductos> Productos;
+    private ArrayList<ModeloProductos> Productos;
     private Activity activity;
 
-    public AdaptadorProductos(Activity activity, List<ModeloProductos> Productos) {
+    public AdaptadorProductos(Activity activity, ArrayList<ModeloProductos> Productos) {
         this.Productos = Productos;
         this.activity = activity;
 
@@ -38,7 +39,7 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.codigo.setText(Productos.get(position).getCodigo());
+        holder.codigo.setText(Productos.get(position).getCodigo()+"");
         holder.nombre.setText(Productos.get(position).getProdNombre());
         holder.cantidad.setText(Productos.get(position).getCantidad()+"");
         holder.precio.setText(Productos.get(position).getPrecio()+"");
@@ -49,7 +50,7 @@ public class AdaptadorProductos extends RecyclerView.Adapter<AdaptadorProductos.
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, DetalleProductos.class);
-                intent.putExtra("Productos", Productos.get(holder.getAdapterPosition()));
+                intent.putExtra("Producto", Productos.get(holder.getAdapterPosition()));
                 activity.startActivity(intent);
             }
         });

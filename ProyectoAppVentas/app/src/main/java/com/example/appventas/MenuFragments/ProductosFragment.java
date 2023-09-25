@@ -70,10 +70,10 @@ public class ProductosFragment extends Fragment {
         mostrarProductos(appVentasBD.mostrarProductos());
 
 
+        /*Ajustar el recyclerview de manera vertical*/
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        rvProductos.setLayoutManager(linearLayoutManager);
+        System.out.println(listaProductos.get(0).getProdNombre());
+        rvProductos.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
 
         btnNuevo.setOnClickListener(new View.OnClickListener() {
             @Override

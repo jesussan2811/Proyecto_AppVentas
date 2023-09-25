@@ -50,11 +50,11 @@ public class DetalleProductos extends AppCompatActivity {
 
         Intent intent = getIntent();
         ModeloProductos producto = (ModeloProductos) intent.getSerializableExtra("Producto");
-        dtProdCodigo.setText(producto.getCodigo());
+        dtProdCodigo.setText(""+producto.getCodigo());
         dtProdNombre.setText(producto.getProdNombre());
         dtProdDescripcion.setText(producto.getDescripcion());
         dtProdMarca.setText(producto.getMarca());
-        dtProdCantidad.setText(producto.getCantidad());
+        dtProdCantidad.setText(""+producto.getCantidad());
         dtProdPrecio.setText(""+producto.getPrecio());
 
         btnregresar.setOnClickListener(new View.OnClickListener() {

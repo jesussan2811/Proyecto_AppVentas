@@ -52,7 +52,7 @@ public class DetalleClientes extends AppCompatActivity {
 
         Intent intent = getIntent();
         ModeloClientes cliente = (ModeloClientes) intent.getSerializableExtra("Cliente");
-        dtCliID.setText(cliente.getCliID());
+        dtCliID.setText(""+cliente.getCliID());
         dtCliNombre.setText(cliente.getCliNombre());
         dtCliApellidos.setText(cliente.getApellido());
         dtCliCredito.setText(""+cliente.getCredito());

@@ -150,28 +150,28 @@ public class AppVentasBD extends SQLiteOpenHelper {
     public void eliminarUsuario(int userID){
         SQLiteDatabase bd=getWritableDatabase();
         if (bd!=null){
-            bd.execSQL("DELETE FROM USUARIOS WHERE='"+userID+"'");
+            bd.execSQL("DELETE FROM USUARIOS WHERE USERID='"+userID+"'");
             bd.close();
         }
     }
     public void eliminarCliente(int cliID){
         SQLiteDatabase bd=getWritableDatabase();
         if (bd!=null){
-            bd.execSQL("DELETE FROM CLIENTES WHERE='"+cliID+"'");
+            bd.execSQL("DELETE FROM CLIENTES WHERE CLIID='"+cliID+"'");
             bd.close();
         }
     }
     public void eliminarProducto(int codigo){
         SQLiteDatabase bd=getWritableDatabase();
         if (bd!=null){
-            bd.execSQL("DELETE FROM PRODUCTOS WHERE='"+codigo+"'");
+            bd.execSQL("DELETE FROM PRODUCTOS WHERE CODIGO='"+codigo+"'");
             bd.close();
         }
     }
     public void eliminarVenta(int folio){
         SQLiteDatabase bd=getWritableDatabase();
         if (bd!=null){
-            bd.execSQL("DELETE FROM VENTAS WHERE='"+folio+"'");
+            bd.execSQL("DELETE FROM VENTAS WHERE FOLIO='"+folio+"'");
             bd.close();
         }
     }
@@ -203,6 +203,20 @@ public class AppVentasBD extends SQLiteOpenHelper {
             bd.execSQL("UPDATE VENTAS SET CLIENTE="+clienteID+",PRODUCTOS='"+productos+"',IMPORTE="+importe+",FECHAVENTA='"+fechaVenta+"' WHERE FOLIO="+folio);
             bd.close();
         }
+    }
+    public boolean buscarUsuario(String user, String password){
+        SQLiteDatabase bd=getReadableDatabase();
+        Cursor cursor=bd.rawQuery("SELECT * FROM USUARIOS WHERE USERNAME ='"+user+"'",null);
+        if (cursor.moveToFirst()){
+            do {
+
+                if (cursor.getString(2).equals(password))
+                    return true;
+
+            }while (cursor.moveToNext());
+        }
+
+        return false;
     }
 }
 
