@@ -18,6 +18,7 @@ import com.example.appventas.Capturas.CapturaProductos;
 import com.example.appventas.R;
 import com.example.appventas.adaptadores.AdaptadorProductos;
 import com.example.appventas.entidades.ModeloProductos;
+import com.example.appventas.modelos.ModeloProductosFragment;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,8 @@ public class ProductosFragment extends Fragment {
     ArrayList<ModeloProductos> listaProductos;
     AppVentasBD appVentasBD;
     Button btnNuevo;
+    ModeloProductosFragment modeloProductosFragment;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -66,14 +69,14 @@ public class ProductosFragment extends Fragment {
         listaProductos = new ArrayList<>();
         rvProductos = view.findViewById(R.id.recyclerViewProductos);
         btnNuevo = (Button) view.findViewById(R.id.btnNuevoProducto);
-        appVentasBD = new AppVentasBD(getContext());
-        mostrarProductos(appVentasBD.mostrarProductos());
-
+        //appVentasBD = new AppVentasBD(getContext());
+        //mostrarProductos(appVentasBD.mostrarProductos());
+        modeloProductosFragment = new ModeloProductosFragment(this);
 
         /*Ajustar el recyclerview de manera vertical*/
-
-        System.out.println(listaProductos.get(0).getProdNombre());
         rvProductos.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+
+        modeloProductosFragment.getListaProductos();
 
         btnNuevo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,8 +92,9 @@ public class ProductosFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        appVentasBD = new AppVentasBD(getContext());
-        mostrarProductos(appVentasBD.mostrarProductos());
+        //appVentasBD = new AppVentasBD(getContext());
+        //mostrarProductos(appVentasBD.mostrarProductos());
+        modeloProductosFragment.getListaProductos();
     }
     public void mostrarProductos(ArrayList<ModeloProductos> productos){
 

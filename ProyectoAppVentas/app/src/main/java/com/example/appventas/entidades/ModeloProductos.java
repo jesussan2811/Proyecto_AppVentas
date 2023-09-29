@@ -5,54 +5,54 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class ModeloProductos implements Serializable {
-    private int codigo;
-    private String prodNombre;
-    private String descripcion;
-    private String marca;
-    private int cantidad;
-    private double precio;
+    private int CODIGO;
+    private String PRODNOMBRE;
+    private String DESCRIPCION;
+    private String MARCA;
+    private int CANTIDAD;
+    private double PRECIO;
 
     public ModeloProductos() {}
 
     public ModeloProductos(int codigo, String prodNombre, String descripcion, String marca, int cantidad, double precio) {
-        this.codigo = codigo;
-        this.prodNombre = prodNombre;
-        this.descripcion = descripcion;
-        this.marca = marca;
-        this.cantidad = cantidad;
-        this.precio = precio;
+        this.CODIGO = codigo;
+        this.PRODNOMBRE = prodNombre;
+        this.DESCRIPCION = descripcion;
+        this.MARCA = marca;
+        this.CANTIDAD = cantidad;
+        this.PRECIO = precio;
     }
 
     public ModeloProductos(String prodNombre, String descripcion, String marca, int cantidad, double precio) {
-        this.prodNombre = prodNombre;
-        this.descripcion = descripcion;
-        this.marca = marca;
-        this.cantidad = cantidad;
-        this.precio = precio;
+        this.PRODNOMBRE = prodNombre;
+        this.DESCRIPCION = descripcion;
+        this.MARCA = marca;
+        this.CANTIDAD = cantidad;
+        this.PRECIO = precio;
     }
 
     public int getCodigo() {
-        return codigo;
+        return CODIGO;
     }
 
     public String getProdNombre() {
-        return prodNombre;
+        return PRODNOMBRE;
     }
 
     public String getDescripcion() {
-        return descripcion;
+        return DESCRIPCION;
     }
 
     public String getMarca() {
-        return marca;
+        return MARCA;
     }
 
     public int getCantidad() {
-        return cantidad;
+        return CANTIDAD;
     }
 
     public double getPrecio() {
-        return precio;
+        return PRECIO;
     }
 
 }

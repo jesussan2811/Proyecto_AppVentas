@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.appventas.AppVentasBD;
 import com.example.appventas.R;
+import com.example.appventas.entidades.ModeloProductos;
+import com.example.appventas.modelos.ModeloCapturaProductos;
 
 public class CapturaProductos extends AppCompatActivity {
 
@@ -23,6 +25,7 @@ public class CapturaProductos extends AppCompatActivity {
     Button btnEnviar;
     Button btnSalir;
 
+    ModeloCapturaProductos modeloCapturaProductos;
     AlertDialog.Builder builder;
 
     @Override
@@ -39,9 +42,9 @@ public class CapturaProductos extends AppCompatActivity {
         btnSalir = (Button) findViewById(R.id.CapSalir);
         btnEnviar = (Button) findViewById(R.id.CapEnviar);
 
-
+        modeloCapturaProductos = new ModeloCapturaProductos(this);
         builder = new AlertDialog.Builder(this);
-        final AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
+        //final AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,10 +55,11 @@ public class CapturaProductos extends AppCompatActivity {
                 String cantidad = nvoCantidad.getText().toString();
                 String precio = nvoPrecio.getText().toString();
 
-
+                ModeloProductos productoNuevo = new ModeloProductos(nombre,descripcion,marca,Integer.parseInt(cantidad),Double.parseDouble(precio));
                 if(validarcampos(nombre,descripcion,marca,cantidad,precio)){
                     Toast.makeText(getBaseContext(),"Nuevo Producto Capturado",Toast.LENGTH_LONG).show();
-                    appVentasBD.agregarProducto(nombre,descripcion,marca,Integer.parseInt(cantidad),Double.parseDouble(precio));
+                    //appVentasBD.agregarProducto(nombre,descripcion,marca,Integer.parseInt(cantidad),Double.parseDouble(precio));
+                    modeloCapturaProductos.postProducto(productoNuevo);
                 }else{
                     Toast.makeText(getBaseContext(),"Llena todos los campos",Toast.LENGTH_LONG).show();
 
@@ -102,5 +106,13 @@ public class CapturaProductos extends AppCompatActivity {
 
 
         return valido;
+    }
+
+    public void mostrarRespuesta(String respuesta){
+        Toast.makeText(this,respuesta,Toast.LENGTH_LONG).show();
+        if(respuesta.compareTo("se ha dado de alta") == 0)
+        {
+            finish();
+        }
     }
 }

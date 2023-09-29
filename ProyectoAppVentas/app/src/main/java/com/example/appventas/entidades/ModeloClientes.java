@@ -4,60 +4,60 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial")
 public class ModeloClientes implements Serializable {
-    private int cliID;
-    private String cliNombre;
-    private String apellido;
-    private double credito;
-    private String telefono;
-    private String domicilio;
-    private String fechaNacimiento;
+    private int CLIID;
+    private String CLINOMBRE;
+    private String APELLIDOS;
+    private double CREDITO;
+    private String TELEFONO;
+    private String DOMICILIO;
+    private String FECHANACIMIENTO;
 
     public ModeloClientes(){}
 
     public ModeloClientes(int cliID, String cliNombre, String apellido, double credito, String telefono, String domicilio, String fechaNacimiento){
-        this.cliID = cliID;
-        this.cliNombre = cliNombre;
-        this.apellido = apellido;
-        this.credito = credito;
-        this.telefono = telefono;
-        this.domicilio = domicilio;
-        this.fechaNacimiento = fechaNacimiento;
+        this.CLIID = cliID;
+        this.CLINOMBRE = cliNombre;
+        this.APELLIDOS = apellido;
+        this.CREDITO = credito;
+        this.TELEFONO = telefono;
+        this.DOMICILIO = domicilio;
+        this.FECHANACIMIENTO = fechaNacimiento;
     }
     public ModeloClientes(String cliNombre, String apellido, double credito, String telefono, String domicilio, String fechaNacimiento){
-        this.cliNombre = cliNombre;
-        this.apellido = apellido;
-        this.credito = credito;
-        this.telefono = telefono;
-        this.domicilio = domicilio;
-        this.fechaNacimiento = fechaNacimiento;
+        this.CLINOMBRE = cliNombre;
+        this.APELLIDOS = apellido;
+        this.CREDITO = credito;
+        this.TELEFONO = telefono;
+        this.DOMICILIO = domicilio;
+        this.FECHANACIMIENTO = fechaNacimiento;
     }
 
     public int getCliID() {
-        return cliID;
+        return CLIID;
     }
 
     public String getCliNombre() {
-        return cliNombre;
+        return CLINOMBRE;
     }
 
     public String getApellido() {
-        return apellido;
+        return APELLIDOS;
     }
 
     public double getCredito() {
-        return credito;
+        return CREDITO;
     }
 
     public String getTelefono() {
-        return telefono;
+        return TELEFONO;
     }
 
     public String getDomicilio() {
-        return domicilio;
+        return DOMICILIO;
     }
 
     public String getFechaNacimiento() {
-        return fechaNacimiento;
+        return FECHANACIMIENTO;
     }
 }
 

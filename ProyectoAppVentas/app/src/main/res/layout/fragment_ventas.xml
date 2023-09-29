@@ -1,114 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MenuFragments.VentasFragment">
 
     <TextView
-        android:id="@+id/titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ventas"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"/>
-
-    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/titulo">
+        android:layout_height="0dp"
+        android:layout_weight=".065"
+        android:gravity="center"
+        android:textColor="@color/green"
+        android:textSize="30sp"
+        android:text="VENTAS" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".065">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/linlay1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titulo"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="*" />
-
-                    <EditText
-                        android:id="@+id/ClienteID"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:hint="ClienteID"
-                        android:inputType="text"
-                        android:maxLength="25" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="*" />
-
-                    <EditText
-                        android:id="@+id/CodigosProdctos"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:hint="Codigos de Productos"
-                        android:inputType="text"
-                        android:maxLength="15" />
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
+            android:orientation="horizontal"
+            android:layout_gravity="">
+            <TextView
+                android:id="@+id/txtFechaHoy"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/linlay1"
-                android:layout_gravity="center">
+                android:textColor="@color/darkgreen"
+                android:textSize="20dp"
+                android:text="Fecha: " />
 
+            <TextView
+                android:id="@+id/tvFechaHoy"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
 
-                <Button
-                    android:id="@+id/VentasLimpiar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Limpiar" />
+                tools:text="11/11/1998"
+                app:layout_constraintStart_toEndOf="@id/txtFechaHoy"/>
 
-                <Button
-                    android:id="@+id/VentasComprar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Comprar"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="230dp"
-                    tools:layout_editor_absoluteY="474dp" />
+            <TextView
+                android:id="@+id/txtImporte"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/darkgreen"
+                android:textSize="20dp"
+                android:text="Importe: $"/>
 
-                <Button
-                    android:id="@+id/VentasListado"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Listado" />
+            <TextView
+                android:id="@+id/tvImporte"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                tools:text="0.00"
+                app:layout_constraintStart_toEndOf="@id/txtImporte"/>
 
-
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+
+    </FrameLayout>
+
+    <Spinner
+        android:id="@+id/spinClinetes"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".065"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProductosParaVentas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".640"
+        android:clickable="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".065"
+            android:layout_below="@+id/linlay1"
+            android:gravity="center">
+
+
+            <Button
+                android:id="@+id/VentasLimpiar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Limpiar" />
+
+            <Button
+                android:id="@+id/VentasComprar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Comprar"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="230dp"
+                tools:layout_editor_absoluteY="474dp" />
+
+            <Button
+                android:id="@+id/VentasListado"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Listado" />
+
+        </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"/>
+
+</LinearLayout>

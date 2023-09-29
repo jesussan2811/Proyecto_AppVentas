@@ -1,27 +1,35 @@
 package com.example.appventas.entidades;
 
-public class ModeloUsuarios {
-    private int userID;
-    private String userName;
-    private String password;
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class ModeloUsuarios implements Serializable {
+    private int USERID;
+    private String USERNAME;
+    private String USERPASSWORD;
 
     public ModeloUsuarios() {}
 
     public ModeloUsuarios(int userID, String userName, String password) {
-        this.userID = userID;
-        this.userName = userName;
-        this.password = password;
+        this.USERID = userID;
+        this.USERNAME = userName;
+        this.USERPASSWORD = password;
+    }
+
+    public ModeloUsuarios(String userName, String password) {
+        this.USERNAME = userName;
+        this.USERPASSWORD = password;
     }
 
     public int getUserID() {
-        return userID;
+        return USERID;
     }
 
     public String getUserName() {
-        return userName;
+        return USERNAME;
     }
 
     public String getPassword() {
-        return password;
+        return USERPASSWORD;
     }
 }

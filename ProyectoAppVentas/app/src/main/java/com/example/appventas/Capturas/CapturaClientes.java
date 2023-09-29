@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.appventas.AppVentasBD;
 import com.example.appventas.R;
+import com.example.appventas.entidades.ModeloClientes;
+import com.example.appventas.modelos.ModeloCapturaClientes;
 
 public class CapturaClientes extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class CapturaClientes extends AppCompatActivity {
     Button btnEnviar;
     Button btnSalir;
 
+    ModeloCapturaClientes modeloCapturaClientes;
     AlertDialog.Builder builder;
 
     @Override
@@ -41,9 +44,9 @@ public class CapturaClientes extends AppCompatActivity {
         btnSalir = (Button) findViewById(R.id.CapSalir);
         btnEnviar = (Button) findViewById(R.id.CapEnviar);
 
-
+        modeloCapturaClientes =new ModeloCapturaClientes(this);
         builder = new AlertDialog.Builder(this);
-        final AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
+        //final AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,16 +58,15 @@ public class CapturaClientes extends AppCompatActivity {
                 String domicilio = nvoDomicilio.getText().toString();
                 String fechaNacimiento = nvoFechaNacimiento.getText().toString();
 
-
+                ModeloClientes clienteNuevo = new ModeloClientes(nombre,apellidos,Double.parseDouble(credito),telefono,domicilio,fechaNacimiento);
                 if(validarcampos(nombre,apellidos,credito,telefono,domicilio,fechaNacimiento)){
                     Toast.makeText(getBaseContext(),"Nuevo Cliente Capturado",Toast.LENGTH_LONG).show();
-                    appVentasBD.agregarCliente(nombre,apellidos,Double.parseDouble(credito),telefono,domicilio,fechaNacimiento);
+                    //appVentasBD.agregarCliente(nombre,apellidos,Double.parseDouble(credito),telefono,domicilio,fechaNacimiento);
+                    modeloCapturaClientes.postCliente(clienteNuevo);
                 }else{
                     Toast.makeText(getBaseContext(),"Llena todos los campos",Toast.LENGTH_LONG).show();
 
                 }
-
-
             }
         });
         btnSalir.setOnClickListener(new View.OnClickListener() {

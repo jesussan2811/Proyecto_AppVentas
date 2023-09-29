@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.appventas.Capturas.CapturaUsuarios;
 import com.example.appventas.entidades.ModeloUsuarios;
+import com.example.appventas.modelos.ModeloMainActivity;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     Button btnRegistrar;
     EditText txtUsuario;
     EditText txtPassword;
+
+    ArrayList<ModeloUsuarios> listaUsuarios;
+    ModeloMainActivity modeloMainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +35,20 @@ public class MainActivity extends AppCompatActivity {
         btnIngresar = (Button) findViewById(R.id.btnIngresar);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
 
+        modeloMainActivity = new ModeloMainActivity(this);
+        listaUsuarios = new ArrayList<>();
+
+        modeloMainActivity.getListaUsuarios();
+
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String usuario = txtUsuario.getText().toString();
                 String password = txtPassword.getText().toString();
-                AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
+                //AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
 
-                if (appVentasBD.buscarUsuario(usuario,password)){
+                //if (appVentasBD.buscarUsuario(usuario,password)){
+                if (buscarUsuario(listaUsuarios,usuario,password)){
                     Toast.makeText(getBaseContext(),"Inicio de sesion confirmado: Bienvenido "+usuario,Toast.LENGTH_LONG).show();
                     //Intent intent = new Intent(this, CapturaProspectos.class);
                     Intent intent = new Intent(getBaseContext(),MenuActivity.class);
@@ -59,6 +69,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        modeloMainActivity.getListaUsuarios();
+    }
+
+    public void obtenerUsuarios(ArrayList<ModeloUsuarios> usuarios){
+        listaUsuarios = usuarios;
+    }
+
+    public boolean buscarUsuario(ArrayList<ModeloUsuarios> usuarios, String nombre, String contrasenia){
+        if(usuarios.isEmpty())
+            return false;
+        else{
+            for (int i = 0; i < usuarios.size(); i++){
+                if (usuarios.get(i).getUserName().equals(nombre)){
+                    if (usuarios.get(i).getPassword().equals(contrasenia))
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

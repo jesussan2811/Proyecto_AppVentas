@@ -19,6 +19,7 @@ import com.example.appventas.Capturas.CapturaClientes;
 import com.example.appventas.R;
 import com.example.appventas.adaptadores.AdaptadorClientes;
 import com.example.appventas.entidades.ModeloClientes;
+import com.example.appventas.modelos.ModeloClientesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,8 @@ public class ClientesFragment extends Fragment {
     ArrayList<ModeloClientes> listaClientes;
     AppVentasBD appVentasBD;
     Button btnNuevo;
+    ModeloClientesFragment modeloClientesFragment;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -68,12 +71,14 @@ public class ClientesFragment extends Fragment {
         listaClientes = new ArrayList<>();
         rvClientes = view.findViewById(R.id.recyclerViewClientes);
         btnNuevo = (Button) view.findViewById(R.id.nuevoCliente);
-        appVentasBD = new AppVentasBD(getContext());
-        mostrarClientes(appVentasBD.mostrarClientes());
-
+        //appVentasBD = new AppVentasBD(getContext());
+        //mostrarClientes(appVentasBD.mostrarClientes());
+        modeloClientesFragment = new ModeloClientesFragment(this);
 
         /*Ajustar el recyclerview de manera vertical*/
         rvClientes.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false));
+
+        modeloClientesFragment.getListaClientes();
 
         btnNuevo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,8 +94,9 @@ public class ClientesFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        appVentasBD = new AppVentasBD(getContext());
-        mostrarClientes(appVentasBD.mostrarClientes());
+        //appVentasBD = new AppVentasBD(getContext());
+        //mostrarClientes(appVentasBD.mostrarClientes());
+        modeloClientesFragment.getListaClientes();
     }
     public void mostrarClientes(ArrayList<ModeloClientes> clientes){
 

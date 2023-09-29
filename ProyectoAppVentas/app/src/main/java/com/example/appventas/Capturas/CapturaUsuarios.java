@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.appventas.AppVentasBD;
 import com.example.appventas.R;
+import com.example.appventas.entidades.ModeloUsuarios;
+import com.example.appventas.modelos.ModeloCapturaUsuarios;
 
 public class CapturaUsuarios extends AppCompatActivity {
 
@@ -21,6 +23,7 @@ public class CapturaUsuarios extends AppCompatActivity {
     Button btnEnviar;
     Button btnSalir;
 
+    ModeloCapturaUsuarios modeloCapturaUsuarios;
     AlertDialog.Builder builder;
 
     @Override
@@ -35,8 +38,9 @@ public class CapturaUsuarios extends AppCompatActivity {
         btnSalir = (Button) findViewById(R.id.CapSalir);
         btnEnviar = (Button) findViewById(R.id.CapEnviar);
 
+        modeloCapturaUsuarios =new ModeloCapturaUsuarios(this);
         builder = new AlertDialog.Builder(this);
-        final AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
+        //final AppVentasBD appVentasBD = new AppVentasBD(getApplicationContext());
 
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,10 +49,12 @@ public class CapturaUsuarios extends AppCompatActivity {
                 String contrasenia = nvoPassword.getText().toString();
                 String clave = claveEmpresa.getText().toString();
 
+                ModeloUsuarios usuarioNuevo = new ModeloUsuarios(usuario,contrasenia);
                 if (validarcampos(usuario,contrasenia,clave)){//
                     if(clave != "79520"){
                         Toast.makeText(getBaseContext(),"Nuevo Usuario Registrado",Toast.LENGTH_LONG).show();
-                        appVentasBD.agregarUsuario(usuario,contrasenia);
+                        //appVentasBD.agregarUsuario(usuario,contrasenia);
+                        modeloCapturaUsuarios.postUsuario(usuarioNuevo);
                         finish();
                     }else{
                         Toast.makeText(getBaseContext(),"La clave es incorrecta",Toast.LENGTH_LONG).show();
@@ -77,5 +83,13 @@ public class CapturaUsuarios extends AppCompatActivity {
             valido = false;
 
         return valido;
+    }
+
+    public void mostrarRespuesta(String respuesta){
+        Toast.makeText(this,respuesta,Toast.LENGTH_LONG).show();
+        if(respuesta.compareTo("se ha dado de alta") == 0)
+        {
+            finish();
+        }
     }
 }
