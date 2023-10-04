@@ -192,13 +192,13 @@ app.post('/addVenta', (req, res) => {
 app.put('/clientes/update/:id', (req, res) => {
     console.log("si entro");
     const { id } = req.params;
-    const { credito } = req.body;
-    console.log(credito);
-    const query = `UPDATE CLIENTES set CREDITO = '${credito}' where CLIID = ${id}`;
+    const { CREDITO } = req.body;
+    console.log(CREDITO);
+    const query = `UPDATE CLIENTES set CREDITO = ${CREDITO} where CLIID = ${id}`;
 
     conexion.query(query,error => {
         if (error) throw error;
-        res.send({mensaje:'Evaluado'});
+        res.send({mensaje:'Credito del cliente actualizado'});
     });
 });
 
@@ -206,12 +206,36 @@ app.put('/clientes/update/:id', (req, res) => {
 app.put('/productos/update/:id', (req, res) => {
     console.log("si entro");
     const { id } = req.params;
-    const { cantidad } = req.body;
-    console.log(cantidad);
-    const query = `UPDATE PRODUCTOS set CANTIDAD = '${cantidad}' where CODIGO = ${id}`;
+    const { CANTIDAD } = req.body;
+    console.log(CANTIDAD);
+    const query = `UPDATE PRODUCTOS set CANTIDAD = ${CANTIDAD} where CODIGO = ${id}`;
 
     conexion.query(query,error => {
         if (error) throw error;
-        res.send({mensaje:'Evaluado'});
+        res.send({mensaje:'Cantidad de producto actualizada'});
+    });
+});
+
+//DELETE de un cliente
+app.delete('/clientes/delete/:id', (req, res) => {
+    console.log("si elimino");
+    const { id } = req.params;
+    const query = `DELETE FROM CLIENTES where CLIID = ${id}`;
+
+    conexion.query(query,error => {
+        if (error) throw error;
+        res.send({mensaje:'El cliente ha sido eliminado'});
+    });
+});
+
+//DELETE de un producto
+app.delete('/productos/delete/:id', (req, res) => {
+    console.log("si elimino");
+    const { id } = req.params;
+    const query = `DELETE FROM PRODUCTOS where CODIGO = ${id}`;
+
+    conexion.query(query,error => {
+        if (error) throw error;
+        res.send({mensaje:'El producto ha sido eliminado'});
     });
 });
