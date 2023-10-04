@@ -8,12 +8,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.appventas.AppVentasBD;
 import com.example.appventas.R;
 import com.example.appventas.entidades.ModeloClientes;
+import com.example.appventas.entidades.RespuestaApi;
+import com.example.appventas.modelos.ModeloDetalleClientes;
 
 public class DetalleClientes extends AppCompatActivity {
     TextView dtCliID;
@@ -26,7 +29,11 @@ public class DetalleClientes extends AppCompatActivity {
 
     Button btnregresar;
     Button btnEliminar;
-    Button btnEditar;
+    Button btnSumarCredito;
+
+    EditText dtCreditoASumar;
+
+    ModeloDetalleClientes modeloDetalleClientes;
 
     AlertDialog.Builder builder;
 
@@ -45,10 +52,14 @@ public class DetalleClientes extends AppCompatActivity {
 
         btnregresar = (Button) findViewById(R.id.DetalCliRegresar);
         btnEliminar = (Button) findViewById(R.id.EliminarCliente);
-        btnEditar = (Button) findViewById(R.id.EditarCliente);
+        btnSumarCredito = (Button) findViewById(R.id.SumarCredito);
+
+        dtCreditoASumar = (EditText) findViewById(R.id.EditTextCreditoASumar);
+
+        modeloDetalleClientes = new ModeloDetalleClientes(this);
 
         builder = new AlertDialog.Builder(this);
-        final AppVentasBD appVentasBD=new AppVentasBD(getApplicationContext());
+        //final AppVentasBD appVentasBD=new AppVentasBD(getApplicationContext());
 
         Intent intent = getIntent();
         ModeloClientes cliente = (ModeloClientes) intent.getSerializableExtra("Cliente");
@@ -58,7 +69,7 @@ public class DetalleClientes extends AppCompatActivity {
         dtCliCredito.setText(""+cliente.getCredito());
         dtCliTelefono.setText(cliente.getTelefono());
         dtCliDomicilio.setText(cliente.getDomicilio());
-        dtCliFechaNacimiento.setText(cliente.getFechaNacimiento());
+        dtCliFechaNacimiento.setText(cliente.getFechaNacimiento().substring(0,10));
 
         btnregresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +77,7 @@ public class DetalleClientes extends AppCompatActivity {
                 finish();
             }
         });
+
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,8 +86,8 @@ public class DetalleClientes extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
-                                appVentasBD.eliminarCliente(cliente.getCliID());
-                                Toast.makeText(getBaseContext(),"Se ha eliminado un cliente",Toast.LENGTH_LONG).show();
+                                //appVentasBD.eliminarCliente(cliente.getCliID());
+                                modeloDetalleClientes.eliminarCliente(cliente.getCliID());
                                 finish();
                                 break;
 
@@ -85,11 +97,44 @@ public class DetalleClientes extends AppCompatActivity {
                         }
                     }
                 };
-
-
                 builder.setMessage("Seguro que quieres Eliminar este Cliente?").setPositiveButton("Si", dialogClickListener)
                         .setNegativeButton("No", dialogClickListener).show();
             }
         });
+        btnSumarCredito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txtCreditoASumar = dtCreditoASumar.getText().toString();
+                double creditoASumar = Double.parseDouble(txtCreditoASumar);
+
+                if (txtCreditoASumar.length() != 0 && creditoASumar > 0.0) {
+                    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case DialogInterface.BUTTON_POSITIVE:
+                                    modeloDetalleClientes.ampliarCredito(cliente.getCliID(),creditoASumar);
+                                    finish();
+                                    break;
+
+                                case DialogInterface.BUTTON_NEGATIVE:
+
+                                    break;
+                            }
+                        }
+                    };
+
+
+                    builder.setMessage("Estas seguro que quieres añadir esta cantidad?").setPositiveButton("Si", dialogClickListener)
+                            .setNegativeButton("No", dialogClickListener).show();
+                }
+                else{
+                    Toast.makeText(getBaseContext(),"Ingresa la cantidad para tu credito",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+    public void respuesta(RespuestaApi respuestaApi){
+        Toast.makeText(this,respuestaApi.mensaje,Toast.LENGTH_LONG).show();
     }
 }
